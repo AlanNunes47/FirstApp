@@ -16,7 +16,7 @@ export default TaskImputField = (props) => {
         <KeyboardAvoidingView 
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.container}>
-            <TextInput style={styles.imputField} value={task} onChangeText={text => setTask(text)} TextColor={'#fff'} placeholderTextColor={'white'}/>
+            <TextInput style={styles.imputField} value={task} onChangeText={text => setTask(text)} placeholder ={'Write a task'} TextColor={'#fff'} placeholderTextColor={'white'}/>
             <TouchableOpacity onPress={() => handleAddTask()}>
                 <View style={styles.button}>
                     <MaterialIcons name="keyboard-arrow-up" size={24} color="black"/>
