@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import { Text, StyleSheet, View, Keyboard, ScrollView, Alert} from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
 import TaskImputField from './TaskImputField';
 import TaskItem from './TaskItem';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 
 
