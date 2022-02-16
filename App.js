@@ -1,108 +1,30 @@
-import React, {useState, useEffect} from 'react';
-import { Text, StyleSheet, View, Keyboard, ScrollView, Alert} from 'react-native';
-import TaskImputField from './TaskImputField';
-import TaskItem from './TaskItem';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React from "react";
+import { View, Text, StyleSheet} from "react-native";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack'; 
 
+// right here we imported to the pages
+//As you can see here The function gets imported here that means we can use it here.
+import FirstApp from './Todo';
+import QRPage from "./QRPage";
 
+const Stack = createNativeStackNavigator();
 
-
-export default function FirstApp(){
-  const [tasks, setTasks] = useState([]);
-
-  const save = async(tasks) => { 
-    try{
-      // console.log(tasks)
-        await AsyncStorage.setItem("task", JSON.stringify(tasks));
-    }catch (err) {
-        alert(err);
-    }
-  }
-
-  const load = async () => {
-    try {
-        let tasks = await AsyncStorage.getItem("task")
-        console.log(tasks)
-        if (tasks !== null) {
-            setTasks(JSON.parse(tasks));
-        }
-
-    }catch (err) {
-        alert (err)
-    }
+const App = () => {
+    return (
+        // Navigation ta gwn un "container" ku ta hold all the possible pages
+        <NavigationContainer >
+        {/* // akinn we just initialize un stack navigator with 2 routes aka pages */}
+        <Stack.Navigator>
+            {/* first page ta e todo dus e prome kos ku bo ta mira */}
+          <Stack.Screen name="TODO" component={FirstApp} options={{headerTitleStyle: {color: '#fff',},headerStyle: {backgroundColor: '#3E3364',},}} />
+            {/* second page is the QR Page  */}
+            {/* as you can see every page has a name and component, a component is basicly what needs to be redered when you go to that page */}
+          <Stack.Screen name="QRPage" component={QRPage} options={{headerTitleStyle: {color: '#fff',},headerStyle: {backgroundColor: '#3E3364',},}} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
 };
 
-useEffect (() => {
-  load()
-}, []);
 
-  const addTask = (task) => {
-    if (task == null) return;
-    setTasks([...tasks, task]);
-    save([...tasks, task])
-    Keyboard.dismiss();
-  }
-
-//Delete confirmation
-  const deleteTask = (deleteIndex) => {
-    Alert.alert(
-      "Are you sure?",
-      "Are you sure you want to delete this? ",
-      [
-        {
-          text: 'Yes',
-          onPress: () => { 
-            setTasks(tasks.filter((value, index)=> index !== deleteIndex));
-          }
-        },
-        {
-          text: 'No',
-          onPress: () =>{
-            console.log('No pressed');
-          }
-        }
-      ]
-    )
-  }
-  
-  return (
-    <View style={styles.container}>
-      <Text style={styles.heading}>TODO LIST</Text>
-      <ScrollView style={styles.ScrollView}>
-        {
-          tasks.map((task, index)=> {
-            return(
-              <View key={index} style={styles.taksContainer}>
-                <TaskItem index={index + 1} task={task} deleteTask={() => deleteTask(index)}/>
-              </View>
-            );
-          })
-      }
-
-      </ScrollView>
-      <TaskImputField addTask={addTask}/>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#1E1A3C',
-  },
-  heading: {
-    color:'#fff',
-    fontSize: 20,
-    fontWeight: '600',
-    marginTop: 30,
-    marginBottom: 10,
-    marginLeft: 20,
-  },
-  ScrollView: {
-    marginBottom: 70,
-  },
-  taksContainer: {
-    marginTop: 20,
-  }
-});
-
+export default App;                               
