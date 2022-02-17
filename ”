@@ -1,4 +1,4 @@
-[main 2ec3db3] “FirstApp
+[main ebe2345] “FirstApp
  Committer: Alan Nunes de Pontes <alannunesdepontes@Alans-iMac.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
@@ -12,7 +12,5 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 9 files changed, 1093 insertions(+), 115 deletions(-)
- rewrite App.js (99%)
- create mode 100644 QRPage.js
- create mode 100644 Todo.js
+ 2 files changed, 19 insertions(+), 1 deletion(-)
+ create mode 100644 "\342\200\235"

@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import { Text, StyleSheet, View, Keyboard, ScrollView, Alert} from 'react-native';
+import { Text, StyleSheet, View, Keyboard, ScrollView, Alert, TouchableOpacity} from 'react-native';
 import TaskImputField from './TaskImputField';
 import TaskItem from './TaskItem';
 import 'react-native-gesture-handler'; 
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 

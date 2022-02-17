@@ -1,10 +1,10 @@
 import React, {useState} from "react";
-import { Text, View, StyleSheet} from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity} from "react-native";
 import 'react-native-gesture-handler'; 
-import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+import { TextInput } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import QRCode from "react-native-qrcode-svg";
-import TaskImputField from './TaskImputField';
+
 
 
 export default function QRPage() {
@@ -27,12 +27,12 @@ export default function QRPage() {
         {/*QRCODE*/}
         <View>
             <View style={styles.QRcontainer2}>
-            <QRCode value = {qrValue ? qrValue : 'NA'} size={285} color="white" backgroundColor="#3E3364" >
+            <QRCode value = {qrValue ? qrValue : 'NA'} size={285} color="white" backgroundColor='#1E1A3C' >
                
             </QRCode>
             </View> 
             <View style={styles.imputFieldContainer}>
-            <TextInput style={styles.imputFieldQR} onChangeText={(text) => {setImput(text)}} placeholder ={'Write a task'}></TextInput>
+            <TextInput style={styles.imputFieldQR} onChangeText={(text) => {setImput(text)}}></TextInput>
             </View>
             <View style={styles.QRCodeGeneratorContainer}>
             <TouchableOpacity style={styles.generatorQR} onPress={() => {setQrValue (imput)}} textColor="#fff">
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     },
     QRcontainer2: {
         alignSelf: 'center',
-        backgroundColor:'#3E3364',
+        backgroundColor:'#1E1A3C',
         padding: 10,
         borderRadius: 10,
         marginTop: 10,
@@ -75,17 +75,18 @@ const styles = StyleSheet.create({
     },
     imputFieldContainer: {
         backgroundColor: '#3E3364',
-        marginHorizontal: 40,
-        marginLeft: 43,
+        marginHorizontal: 58,
+        marginLeft: 60,
         borderRadius: 10,
         marginTop: 10,
         paddingTop: 5,
         paddingBottom: 5,
+    
     },
     imputFieldQR: {
         borderColor: '#fff',
         color: '#fff',
-        height: 30, 
+        height: 40, 
         marginHorizontal: 10, 
         marginLeft:10, 
         borderRadius: 10, 
