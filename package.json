@@ -20,6 +20,7 @@
     "expo-font": "^10.0.4",
     "react": "17.0.2",
     "react-native": "0.67.1",
+    "react-native-background-timer": "^2.1.1",
     "react-native-gesture-handler": "^2.2.0",
     "react-native-qrcode-svg": "^6.1.2",
     "react-native-safe-area-context": "^3.3.2",

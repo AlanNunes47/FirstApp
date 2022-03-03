@@ -1,9 +1,7 @@
 import React from "react";
-import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, ActivityIndicator} from "react-native";
-
+import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator} from "react-native";
 
 export default class MoviesPage extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -42,10 +40,10 @@ export default class MoviesPage extends React.Component {
 
             let movies = this.state.dataSource.map((val, key) =>{
                 return <View key={key} style={styles.item}>
-                    <Text style={styles.text}>
-                        {val.id}. {val.title}, {val.releaseYear}
-                    </Text>
-                </View>
+                            <Text style={styles.text}>
+                                {val.id}. {val.title}, {val.releaseYear}
+                            </Text>
+                        </View>
 
             })
         
@@ -53,7 +51,10 @@ export default class MoviesPage extends React.Component {
                 <View style={styles.main}>
                     <View style={{flexDirection: 'row', paddingTop: 30, paddingHorizontal: 30, justifyContent: 'space-between'}}>
                         <Text style={styles.heading}>Movies Page</Text>
-                    </View>
+                        <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+                            <Text style={styles.TODObutton}>Start page</Text>
+                        </TouchableOpacity>
+                </View>
                     <View style={styles.container}>
                         {movies}
                     </View>
